@@ -1,0 +1,40 @@
+
+    {% extends 'partials/_base.html '%}
+    {% load static %}
+    {% block content %}
+        <header class="masthead bg-primary text-white text-center">
+                <div class="container d-flex align-items-center flex-column">
+                    <div class="row">
+                    <!-- Masthead Avatar Image-->
+                    
+                        <div class="col">
+                        <img class="masthead-avatar mb-5" src="{% static 'assets/img/avataaars4.svg' %}" alt="..." />
+                        </div>
+                    
+                        {% comment %} <div class="col">
+                        <img class="masthead-avatar mb-5" src="{% static 'assets/img/up.png' %}" alt="..." /> {% endcomment %}
+                            <div class="col"> 
+                                <div class="balloon"></div>
+                               
+                            </div>
+                    
+                        <div class="col">
+                        <img class="masthead-avatar mb-5" src="{% static 'assets/img/avataaars3.svg' %}" alt="..." />
+                        </div>
+                   
+                    </div>
+                    <!-- Masthead Heading-->
+                    <h1 class="masthead-heading text-uppercase mb-0">Travel Book</h1>
+                    <!-- Icon Divider-->
+                    <div class="divider-custom divider-light">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+                    <!-- Masthead Subheading-->
+                    <p class="masthead-subheading font-weight-light mb-0">Bu Bir <b>Travel Book</b> Web Edition Sayfasıdır</p>
+                </div>
+            </header>
+
+        {% endblock%}
+        
