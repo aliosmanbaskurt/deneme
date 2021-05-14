@@ -1,0 +1,76 @@
+{% extends 'partials/_base.html' %} {% load static %} {% block content %}
+
+<style type="text/css">
+
+
+
+
+.pricing-header {
+  max-width: 700px;
+  
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Anılar</h2>
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+                
+            </div>
+        <div class="divider-custom-line"></div>
+    </div>
+<div class="container" style=" max-width:1060px; font-size: 22px;">
+   
+    <div class="card-deck mb-3 text-center">
+            <div class="card mb-1 box-shadow">
+          
+            <div class="card-body box-shadow">
+            <img class="img-fluid rounded border border-white box-shadow" src="{{ memo.image.url}}">     
+           
+             </div>
+    </div>
+    <div class="card mb-2 box-shadow">
+        <div class="card-header" style="background-color:#E0A800; color:#fff; ">
+            <h1 class="my-0 card-title pricing-card-title text-uppercase">{{memo.name}}</h1>
+            
+            </div>
+                <div class="card-body box-shadow text-justify">
+                    <h3 class="my-0 font-weight-bold"></h3>
+                    <ul class="list-unstyled mt-3 mb-4">
+                    <li class="font-italic">
+                  
+                    <u>{{ memo.year_published }},{{ memo.category}}</u>
+                    
+                    </li>
+                    <hr>
+
+                    <li>{{ memo.description }}</li>
+                    
+                    </ul>
+                
+                    
+                </div>
+                <div class="card-footer">
+                <a class="btn btn-primary btn-lg btn-block" href="{% url 'memories' %}"><i class="fas fa-angle-double-left"></i>  Anılara Dön</a>
+                </div>
+                
+        </div> 
+    </div>  
+</div> 
+{% endblock %}

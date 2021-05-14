@@ -4,5 +4,11 @@ from . import views
 
 urlpatterns = [
     path('',views.index, name="index"),
+    path('future/',views.future, name="future"),
+    path('story/',views.story, name="story"),
+   
+
+
+
        
 ]

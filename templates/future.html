@@ -1,0 +1,42 @@
+{% extends 'partials/_base.html' %} {% load static %} {% block content %}
+<br>
+
+
+<section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0" style="font-size:2.2em;">Gelecekte</h3>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                    <!-- Portfolio Item 1-->
+                    {% for future in futures %}
+                    <div class="col-md-6 col-lg-4 mb-5"> 
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                Türkiye {% if future.future_okey == True %}
+                               
+                                <i class="fas fa-thumbs-up fa-4x"></i>
+                                
+                                {% else %}
+                                <i class="fas fa-plane-departure fa-4x" ></i> 
+                                {% endif %}
+                                {{ future.future_name }}
+                               
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{{ future.future_image.url }}" alt="..." />
+                        </div>
+                    </div>  
+                    {%endfor%}               
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

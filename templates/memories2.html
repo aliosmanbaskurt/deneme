@@ -1,4 +1,4 @@
-{% extends 'partials/_base.html '%} {% load static %} {% block content %}
+{% extends 'partials/_base.html' %} {% load static %} {% block content %}
 <style type="text/css">
     * {
         box-sizing: border-box;
@@ -102,32 +102,81 @@
 <br>
 <br>
 <br>
-<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Anılar</h2>
-<div class="divider-custom">
-    <div class="divider-custom-line"></div>
-    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-    <div class="divider-custom-line"></div>
-</div>
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Anılar</h2>
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        
+        <div class="row-justify-md-center" >
+            {% for category in categories %}
+            
+                <a class="btn btn-warning text-uppercase" style="margin-bottom:3px; font-size:0.8em" href="{% url 'memories_by_category' category.slug %}"> {% if category.slug in request.path %} <b><u>{{ category.name }}</u></b> {% else %}  {{ category.name }} {% endif %}</a>
+            
+            {%endfor%}
+        </div>
+        <div class="row-justify-md-center" >
+            {% for tag in tags %}
+            
+                <a class="btn btn-warning text-uppercase" style="margin-bottom:3px; font-size:0.8em" href="{% url 'memories_by_tag' tag.slug %}"> {% if tag.slug in request.path %} <b><u>#{{ tag.name }}</u></b> {% else %}#{{ tag.name }} {% endif %}</a>
+            
+            {%endfor%}
+        </div>
+        <div class="row-justify-md-center" >
+            <div class="col-xl-12 col-md-12 col-sm-12 mt-3 pl-3">
+                <form class="d-flex" method="GET" action="{% url 'search' %}">
+                
+                    <input class="form-control input-text me-2 text-uppercase" name="search" type="text" placeholder="Anı Arayınız..." aria-label="Search">
+                    <input class="btn btn-outline-warning" value="Ara" type="submit">
+                </form>
+            
+                </div>
+
+        </div>
+        <br>
 {% for memo in memory%}
+
 <div class="flip">
     <div class="front" style="background-image: url({{ memo.image.url }})">
-        <h1 class="text-shadow">{{memo.name | truncatechars:15 }}</hi>
+        <h1 class="text-shadow"> {{memo.name | truncatechars:15 }}</hi>
     </div>
     <div class="back">
         <h2 class="text-shadow">{{memo.category}}</h2>
         <hr>
-        <h4>{{memo.name}}</h4>
-        <p style="text-align: justify;">{{ memo.description | truncatechars:400 }}</p>
-        <a class="btn btn-warning" style="margin-bottom:5px">Daha Fazla</a>
+        <h4>
+        {% if "Fest" in memo.name %} <i class="fas fa-beer" style="color:yellow;"></i>{% endif %} 
+        {% if "Buz" in memo.name %} <i class="fas fa-skating" style="color:white;"></i>{% endif %} 
+        {% if "İlk" in memo.name %}<i class="fas fa-heart" style="color:red;"></i>{% endif %}
+        {% if "Film" in memo.name %}<i class="fas fa-video" style="color:black;"></i>{% endif %}
+        {% if "Dönüş" in memo.name %}<i class="fas fa-sad-tear"></i>{% endif %}
+        {% if "Yıl" in memo.name %}<i class="fas fa-glass-cheers" style="color:#7D3646;"></i>{% endif %}
+        {% if "Antik" in memo.name %}<i class="fas fa-landmark" style="color:white;"></i>{% endif %}
+        {% if "Sene" in memo.name %}<i class="fas fa-calendar-check" style="color:white;"></i>{% endif %}
+        {% if "Patara" in memo.name %}<i class="fas fa-moon" style="color:white;"></i>{% endif %}
+        {% if "Plaj" in memo.name %}<i class="fas fa-swimmer" style="color:white;"></i>{% endif %}
+        {% if "Alaçatı" in memo.name %}<i class="fas fa-swimmer" style="color:white;"></i>{% endif %}
+        
+        {{memo.name}}
+        
+        </h4>
+        <p style="text-align: justify;">
+        {{ memo.description | truncatechars:400 }}</p>
+        <a class="btn btn-warning" style="margin-bottom:5px;" href="{% url 'memory_detail' memo.category.slug memo.id %}">Daha Fazla</a>
+        
+
     </div>
 </div>
 {% endfor %}
 
+</div>
+
 
 <br>
 <br>
 
-<!-- vertical -->
+
 
 
 
