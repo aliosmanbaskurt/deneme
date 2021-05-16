@@ -1,0 +1,92 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Travel Book I</title>
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+<style>
+
+.global-container{
+	height:100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    
+	
+}
+
+form{
+	padding-top: 22px;
+	font-size: 14px;
+	margin-top: 38px;
+}
+
+.card-title{ font-weight:300; }
+
+.btn{
+	font-size: 20px;
+	margin-top:25px;
+}
+
+
+.login-form{ 
+	width:330px;
+	margin:20px;
+}
+
+
+
+</style>
+    <body class="bg-light">
+
+<div class="container-fluid bg-light" > 
+    <div class="global-container" style="margin-top:20vh">
+        
+        <div class="row">
+        <div class="col p-0 m-0">
+            <div class="card login-form shadow m-0">
+                
+                    <img src="{% static '/IMG_6703.JPG' %}" class="img-fluid rounded" style="-webkit-filter: opacity(75%);filter: opacity(75%);">
+                
+            </div>
+        </div>
+        <div class="col p-0 m-0">
+            <div class="card login-form shadow m-0 p-0">
+                <div class="card-body">
+                    <h4 class="card-title text-center font-weight-bold text-uppercase">Travel Book Giriş</h4>
+                    <hr>
+                    <div class="card-text">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <h5><span class="" ><i class="fas fa-user"></i> Kullanıcı Adı</span></h5>
+                                {{form.username}}
+                                </div>
+                            <div class="form-group py-3">
+                                <h5><span class="" ><i class="fas fa-key"></i> Şifre</span></h5>
+                                {{form.password}}
+                                </div>
+                            <input type="submit" value="Giriş Yapın" class="btn btn-primary btn-lg btn-block">
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+

@@ -2,10 +2,10 @@ from django.shortcuts import render
 from memories.models import Memory,Category,Tag
 from django.views.generic.list import ListView
 from django.shortcuts import get_list_or_404
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='login')
 def memo_list (request):
     memory=Memory.objects.all().order_by('date')
     categories =Category.objects.all().order_by('?')[:11]
@@ -16,7 +16,8 @@ def memo_list (request):
     'tags' : tags
     }
     return render (request, 'memories2.html',context)
-
+    
+@login_required(login_url='login')
 def tag_list (request,tag_slug):
     memory=Memory.objects.all().filter(tags__slug=tag_slug)
     categories =Category.objects.all().order_by()[:11]
@@ -57,6 +58,9 @@ class MemoriesDetailView(ListView):
 #         context['memory'] = Memory.objects.all().filter(category__slug= self.kwargs['category_slug'])
 #         return context
 
+    
+    
+@login_required(login_url='login')
 def category_detail (request,category_slug):
      memory=Memory.objects.all().filter(category__slug=category_slug)
      categories = Category.objects.all().order_by()[:11]
